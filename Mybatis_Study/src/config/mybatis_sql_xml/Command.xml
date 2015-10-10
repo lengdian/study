@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2009-2012 the original author or authors. Licensed under the 
+	Apache License, Version 2.0 (the "License"); you may not use this file except 
+	in compliance with the License. You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 
+	Unless required by applicable law or agreed to in writing, software distributed 
+	under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES 
+	OR CONDITIONS OF ANY KIND, either express or implied. See the License for 
+	the specific language governing permissions and limitations under the License. -->
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 面向接口编程 -->
+<mapper namespace="dao.interf.ICommand">
+
+	<!-- mybatis中一对多配置 -->
+	<resultMap type="bean.Command" id="Command">
+		<!-- id标签标识主键 result标识普通的列名 -->
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="command" jdbcType="VARCHAR" property="command" />
+		<result column="description" jdbcType="VARCHAR" property="description" />
+		<result column="content" jdbcType="VARCHAR" property="content" />
+		<collection property="contentList" resultMap="Content.Content"></collection>
+		<!-- <association property=""></association>标签，用法与collection标签相反，应用场景为子表中需要关联到主表的内容，在子表对应的bean中要加上主表的bean对象 -->
+	</resultMap>
+
+	<!-- 使用ognl表达式拼接sql语句 -->
+	<select id="queryCommandList" parameterType="bean.Command"
+		resultMap="Command">
+		select
+		<include refid="columns" />
+		from command
+		<where>
+			<if test="command!=null and !&quot;&quot;.equals(command.trim())">and command=#{command}</if>
+			<if test="description!=null and !&quot;&quot;.equals(description.trim())">and description=#{description}</if>
+		</where>
+		<!-- <set>标签的用法和<where>标签类似，不过它是用在update当中 --><!-- 注意trim标签，功能强大，可以模仿wher、set等标签 -->
+		<!-- choose标签，相当于else if -->
+	</select>
+
+	<select id="queryList" resultMap="Command">
+		select
+		d.id
+		id,d.command,d.description,t.id t_id,t.content,t.command_id from
+		Command
+		d left join Content t on d.id=t.command_id
+	</select>
+
+	<sql id="columns">id,command,description,content</sql>
+
+</mapper>

@@ -1,0 +1,40 @@
+ORM(Object Relational Mapping):对象关系映射,是一种程序技术，用于实现面向对象编程语言里不同类型系统的数据之间的转换。Mybatis属于ORM框架的一种
+
+Mybatis：MyBatis是支持普通SQL查询，存储过程和高级映射的优秀持久层框架。MyBatis消除了几乎所有的JDBC代码和参数的手工设置以及结果集的检索。
+	MyBatis使用简单的XML或注解用于配置和原始映射，将接口和Java的POJOs（Plan Old Java Objects，普通的Java对象）映射成数据库中的记录.
+
+Mybatis之SqlSession
+	作用：
+		1、向sql语句传入参数
+		2、执行sql语句
+		3、获取执行sql语句的结果
+		4、事务的控制
+	如何得到SqlSession对象：
+		1、通过配置文件获取数据库连接相关信息
+		2、通过配置信息构建SqlSessionFactory
+		3、通过factory打开数据库会话（得到SqlSession对象）
+		
+		
+！！！Mybatis一对多映射
+
+@常用标签
+
+typeHandler:实现类型转换
+
+@ #{} ${} 区别
+${}没有预编译效果，主要用于sql语句中非sql参数的变量的替换
+
+@获取自增主键值
+
+@接口式编程
+原理：通过动态代理
+
+@分页实现（普通方式，mybatis拦截器方式）
+  --解决前端重复代码问题：自定义标签！！！
+  
+@JDBC和mybatis都可以实现批量新增，优化性能
+  
+  
+  
+  
+  
