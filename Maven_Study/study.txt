@@ -1,0 +1,26 @@
+@maven介绍
+
+maven安装步骤：
+1、下载并加压maven
+2、配置环境变量（M2_HOME,PATH）
+3、修改maven配置文件（本地仓库路径、中央仓库镜像地址）
+
+@maven项目结构
+
+@maven常用命令
+
+maven本身提供插件自动构建项目目录，使用archetype命令执行
+
+maven的生命周期：http://juvenshun.iteye.com/blog/213959
+@maven插件机制
+
+@依赖传递   整节视频
+
+@依赖冲突   整节视频
+原则：
+	1、短路优先
+	2、先声明 先优先
+	
+@依赖继承   整节视频
+
+@使用maven构建web项目 

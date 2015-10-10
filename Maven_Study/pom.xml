@@ -1,0 +1,62 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<!-- 指定当前pom版本 -->
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.hxy</groupId>
+	<artifactId>Maven_Study</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<!-- 指定打包的方式，默认是jar -->
+	<packaging>jar</packaging>
+
+	<!-- 项目信息 -->
+	<name>Maven_Study</name>
+	<url>http://maven.apache.org</url>
+	<description>test</description>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<!-- 存在范围，默认为compile：编译测试运行都有效 -->
+			<scope>test</scope>
+			<!-- 设置依赖是否可选，默认fasle -->
+			<optional>true</optional>
+			<!-- 排除 依赖传递 列表 -->
+			<exclusions>
+			    <exclusion></exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+	
+	<!-- 依赖的管理，主要用来给其他模块继承依赖 -->
+	<dependencyManagement>
+	    <dependencies>
+	    </dependencies>
+	</dependencyManagement>
+	
+	<!-- 主要是设置插件用 -->
+	<build>
+	    <plugins>
+	        <plugin>
+	            <groupId></groupId>
+	            <artifactId></artifactId>
+	            <version></version>
+	        </plugin>
+	    </plugins>
+	</build>
+	
+	<!-- 继承<parent></parent> -->
+	
+	
+	<!-- 聚合，将多个模块和在一起运行命令，需要将packaging标签设置为pom -->
+	<modules>
+	</modules>
+
+
+</project>
