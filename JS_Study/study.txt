@@ -1,0 +1,18 @@
+js study
+
+文档对象模型DOM（Document Object Model）:定义访问和处理HTML文档的标准方法。DOM将HTML文档呈现为带有元素、属性和文本的树结构（节点树）。
+HTML文档可以说是由节点构成的集合，三种常见的DOM节点:
+	1. 元素节点：<html>、<body>、<p>等都是元素节点，即标签。
+	2. 文本节点：向用户展示的内容，如<li>...</li>中的JavaScript、DOM、CSS等文本。
+	3. 属性节点：元素属性，如<a>标签的链接属性href="http://www.imooc.com"。
+	
+
+注意：
+	JS是区分大小写的
+	JS中的字符、符号等一定要在英文状态下输入
+	当用户退出页面时（页面关闭、页面刷新等），触发onUnload事件
+	
+	
+js对象：JavaScript 中的所有事物都是对象，如:字符串、数值、数组、函数等，每个对象带有属性和方法。
+	window对象：是BOM（浏览器对象模型）的核心，window对象指当前的浏览器窗口。
+	@location对象:用于获取或设置窗体的URL，并且可以用于解析URL。
