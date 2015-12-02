@@ -21,6 +21,12 @@ HTML文档可以说是由节点构成的集合，三种常见的DOM节点:
 	3. 属性节点：元素属性，如<a>标签的链接属性href="http://www.imooc.com"。
 
 @DOM在前端所处位置（在‘DOM探索之基础详解篇’）
+@DOM级别
+@常用节点类型  -文档节点表示为document对象  -留意下文档片段节点，它并不在dom树中出现，只是作为一个部分文档占位符
+@节点的nodeName与nodeVlaue
+domReady	->domReady.html
+@浏览器渲染引擎的基本渲染流程  
+@webkit主要渲染流程
 
 ！！！立即调用的函数表达式
 

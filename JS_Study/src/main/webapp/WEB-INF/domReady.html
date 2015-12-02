@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>domReady</title>
+<script type="text/javascript">
+	//onload事件要等到页面所有资源（包括外部资源）都加载完毕才触发，如果资源需要加载很久，会造成用户体验不好
+	/* window.onload = function() {
+		document.getElementById("header").style.color = "red";
+	} */
+	//DOMContentLoaded事件是在DOM树创建完成之后就触发，而无需等待其他资源加载完成
+	document.addEventListener('DOMContentLoaded', function() {
+		document.getElementById("header").style.color = "blue";
+	}, false);
+</script>
+</head>
+<body>
+	<h1 id="header">hi</h1>
+</body>
+</html>
