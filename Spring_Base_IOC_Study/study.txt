@@ -1,0 +1,102 @@
+--主要学习SpringFrameWork中IOC、AOP内容
+
+@框架与类库的区别
+@面向接口编程
+
+@什么是IOC（inversion of control）:控制反转
+    实现方式：依赖注入（DI：Dependency Injection）
+	注入方式：设值注入、构造注入  -->code：demo2
+
+spring配置文件中的bean
+		bean的作用域（scope属性）：
+				singleton(默认):单例，指一个Bean容器（一般指同一个上下文）中只存在一份
+				prototype:每次请求（每次使用）都创建新的实例，destroy方式不生效？？
+				request(web应用相关):每次http请求创建一个实例且仅在当前request内有效
+				session(web应用相关):同上，每次http请求创建，当前session内有效
+				global session(web应用相关):
+				
+		bean的生命周期
+				定义：在spring配置文件中定义
+				初始化：启动spring容器，加载配置文件，初始化bean对象
+						实现方法：
+							1.实现org.springframework.beans.factory.InitializingBean接口，覆盖afterPropertiesSet方法
+							2.在配置文件的bean中配置init-method属性
+							3.全局默认配置
+				使用：获取bean对象并使用其属性或者方法
+				销毁：销毁bean对象
+						实现方法：
+							1.实现org.springframework.beans.factory.DisposableBean接口，覆盖destroy方法
+							2.在配置文件的bean中配置destroy-method属性
+							3.全局默认配置
+				@全局初始化以及销毁	
+					
+		aware接口
+				@当bean实现Spring中以Aware结尾的接口后，可以获取相应资源
+				
+		@bean的自动装配
+				
+
+
+
+@resource
+
+spring可以自动检测类并注册bean到ApplicationContext中，下面的注解是会被检测到的
+ * @Component是一个通用注解，可用于任何bean
+ * @Repository,@Service,@Controller是更有针对性的注解
+ * @Repository：通常用于注解DAO类，即持久层
+ * @Service：通常用于注解service类，即服务层
+ * @Controller：通常用于注解controller类，即控制层
+ 
+AutoWired注解：装配对象，可用于setter、成员变量或者构造器上
+@Autowired找不到bean抛出异常问题
+@Autowired装配数组
+@Autowired注解与qualifier注解配合使用
+
+@Configuration注解与bean注解的配合使用
+
+@ImportResource注解与value注解的配合使用
+
+@Bean和Scope注解的配合使用
+
+@Spring4 基于泛型的自动装配 -->需要在接口中定义泛型
+
+autowired（spring注解）与resources（jdk注解）的区别：
+	@Autowired注解是按类型装配依赖对象，默认情况下它要求依赖对象必须存在，如果允许null值，可以设置它required属性为false。如果我们想使用按名称装配，可以结合@Qualifier注解一起使用。如下： 
+	    @Autowired  @Qualifier("personDaoBean") 
+	    private PersonDao  personDao; 
+
+	@Resource注解和@Autowired一样，也可以标注在字段或属性的setter方法上，但它默认按名称装配。名称可以通过@Resource的name属性指定，如果没有指定name属性，当注解标注在字段上，即默认取字段的名称作为bean名称寻找依赖对象，当注解标注在属性的setter方法上，即默认取属性名作为bean名称寻找依赖对象。 
+	    @Resource(name=“personDaoBean”) 
+	    private PersonDao  personDao;//用于字段上 
+
+	　@Resource装配顺序
+	　　1. 如果同时指定了name和type，则从Spring上下文中找到唯一匹配的bean进行装配，找不到则抛出异常
+	　　2. 如果指定了name，则从上下文中查找名称（id）匹配的bean进行装配，找不到则抛出异常
+	　　3. 如果指定了type，则从上下文中找到类型匹配的唯一bean进行装配，找不到或者找到多个，都会抛出异常
+	　　4. 如果既没有指定name，又没有指定type，则自动按照byName方式进行装配；如果没有匹配，则回退为一个原始类型进行匹配，如果匹配则自动装配； 
+	
+	
+	
+	
+@AOP基本概念
+AOP(Aspect Oraented Programming):面向切面的编程
+
+@切面的理解
+
+@AOP实现方式
+
+@AOP相关概念
+  @通知的类型
+  
+@spring中AOP用途
+@spring的AOP实现
+@有无接口spring AOP的实现区别
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
