@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                        http://www.springframework.org/schema/context  
+                        http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<!-- 在某个包下扫描使用了相应注解的类，将这些类注册为bean -->
+	<context:component-scan base-package="com.hxy.spring_base_ioc_study.demo4">
+		<!-- 优化：这里可以添加扫描 过滤/包含 条件 -->
+	</context:component-scan>
+	<!--<context:annotation-config></context:annotation-config> 使用上面的配置便不在使用本配置，因为上面的配置已包含本配置的功能 -->
+
+
+
+</beans>
