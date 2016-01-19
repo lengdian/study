@@ -1,4 +1,4 @@
---主要学习SpringFrameWork中IOC、AOP内容
+--主要学习SpringFrameWork中IOC内容（视频：spring入门篇）
 
 @框架与类库的区别
 @面向接口编程
@@ -31,21 +31,28 @@ spring配置文件中的bean
 				@全局初始化以及销毁	
 					
 		aware接口
-				@当bean实现Spring中以Aware结尾的接口后，可以获取相应资源
+				@当bean实现Spring中以Aware结尾的接口后，可以获取spring容器中的相应资源
 				
-		@bean的自动装配
+		bean的自动装配(autowire属性  全局default-autowire属性) -->code:demo3
+				no(default):不做任何操作
+				byName:根据属性名自动装配。此选项将检查容器并根据名字查找与属性完全一直的bean，并将其与属性自动装配
+				byType:如果容器中存在一个与指定属性类型相同的bean，那么将与该属性自动装配；
+					         如果存在多个该类型的bean，那么抛出异常，并指出不能使用byType方式进行自动装配；
+					         如果没有找到相匹配的bean，则什么事都不发生
+				constructor:与byType方式类似，不同之处在与它应用于构造器参数。如果容器中没有找到与构造器参数类型一致的bean，那么抛出异常
 				
+@resource接口：spring提供的操作资源文件的接口
+@resourceLoader
 
-
-
-@resource
-
-spring可以自动检测类并注册bean到ApplicationContext中，下面的注解是会被检测到的
- * @Component是一个通用注解，可用于任何bean
- * @Repository,@Service,@Controller是更有针对性的注解
- * @Repository：通常用于注解DAO类，即持久层
- * @Service：通常用于注解service类，即服务层
- * @Controller：通常用于注解controller类，即控制层
+spring IOC的注解实现
+		spring使用注解可以自动检测类并注册bean到spring容器中，下面的注解是会被检测到的：
+				@Component是一个通用注解，可用于任何bean
+				(@Repository,@Service,@Controller是更有针对性的注解)
+				@Repository：通常用于注解DAO类，即持久层
+				@Service：通常用于注解service类，即服务层
+				@Controller：通常用于注解controller类，即控制层
+		@使用注解定义bean
+				
  
 AutoWired注解：装配对象，可用于setter、成员变量或者构造器上
 @Autowired找不到bean抛出异常问题

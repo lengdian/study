@@ -13,6 +13,6 @@
 	</bean>
 
 	<bean id="injectDao"
-		class="com.hxy.spring_base_ioc_study.demo2.daoImpl.InjectDaoImpl"></bean>
+		class="com.hxy.spring_base_ioc_study.demo2.daoImpl.InjectDaoImpl" autowire="default"></bean>
 
 </beans>
