@@ -44,38 +44,47 @@ spring配置文件中的bean
 @resource接口：spring提供的操作资源文件的接口
 @resourceLoader
 
-spring IOC的注解实现
+spring IOC的注解实现  -->code:demo4
 		spring使用注解可以自动检测类并注册bean到spring容器中，下面的注解是会被检测到的：
 				@Component是一个通用注解，可用于任何bean
 				(@Repository,@Service,@Controller是更有针对性的注解)
 				@Repository：通常用于注解DAO类，即持久层
 				@Service：通常用于注解service类，即服务层
 				@Controller：通常用于注解controller类，即控制层
-		@使用注解定义bean
 				
- 
-AutoWired注解：装配对象，可用于setter、成员变量或者构造器上
-@Autowired找不到bean抛出异常问题
-@Autowired装配数组
-@Autowired注解与qualifier注解配合使用
-
-@Configuration注解与bean注解的配合使用
-
-@ImportResource注解与value注解的配合使用
-
-@Bean和Scope注解的配合使用
-
-@Spring4 基于泛型的自动装配 -->需要在接口中定义泛型
+		@使用注解定义bean(未做笔记)
+		@使用注解定义bean的作用域(未做笔记)
+		
+		@Require注解（了解即可）
+		
+		AutoWired注解：可用于成员变量，成员方法或者构造方法上。该注解将自动注入对象到成员变量，或者方法的参数上。
+				@使用Autowired注解之后在容器中找不到相应的bean抛出异常问题
+				@可以使用Autowired注解注解spring中那些众所周知的解析依赖性接口
+				@使用Autowired注解装配数组
+				
+		Qualifier（限定符）注解：当按类型自动装配的时候，可能存在多个bean实例的情况，可以使用Qualifier注解缩小范围（或指定唯一），也可以用于指定单独的构造器参数或方法参数
+				@Qualifier注解使用方式
+				@优化：使用Resource注解代替Autowired+Qualifier注解，通过名字进行注入
+				
+		PostConstruct和PreDestroy注解：在自动注入之前以及之后调用的方法上要加的注解
+				
+在java类中使用注解完成xml配置文件的功能（了解即可）：
+		@Configuration注解与Bean注解的配合使用：相当于xml配置文件中的beans和bean标签，其目的是为了将配置bean写在代码中，减少xml文件中的配置		
+		@ImportResource注解与Value注解的配合使用：主要用来引入配置文件，并且赋值给相应的属性
+		@Bean和Scope注解的配合使用：设置作用域以及代理模式
+		@Spring4 基于泛型的自动装配  -->需要在接口中定义泛型
 
 autowired（spring注解）与resources（jdk注解）的区别：
 	@Autowired注解是按类型装配依赖对象，默认情况下它要求依赖对象必须存在，如果允许null值，可以设置它required属性为false。如果我们想使用按名称装配，可以结合@Qualifier注解一起使用。如下： 
 	    @Autowired  @Qualifier("personDaoBean") 
 	    private PersonDao  personDao; 
+	   与Qualifier注解使用可适用于成员变量，构造器，多参数方法。
 
 	@Resource注解和@Autowired一样，也可以标注在字段或属性的setter方法上，但它默认按名称装配。名称可以通过@Resource的name属性指定，如果没有指定name属性，当注解标注在字段上，即默认取字段的名称作为bean名称寻找依赖对象，当注解标注在属性的setter方法上，即默认取属性名作为bean名称寻找依赖对象。 
 	    @Resource(name=“personDaoBean”) 
 	    private PersonDao  personDao;//用于字段上 
-
+	    单独使用适用于成员变量、只有一个参数的setter方法.
+	   
 	　@Resource装配顺序
 	　　1. 如果同时指定了name和type，则从Spring上下文中找到唯一匹配的bean进行装配，找不到则抛出异常
 	　　2. 如果指定了name，则从上下文中查找名称（id）匹配的bean进行装配，找不到则抛出异常
