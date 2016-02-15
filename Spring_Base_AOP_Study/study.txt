@@ -42,17 +42,4 @@ AspectJ使用：
 		@定义切入点
 		@AspectJ Advice扩展
 
-
-
-  
-  
-
-
-
-
- 
- 
- 
- 
- 
  
