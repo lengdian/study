@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+                        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd  
+                        http://www.springframework.org/schema/context  
+                        http://www.springframework.org/schema/context/spring-context-3.1.xsd  
+                        http://www.springframework.org/schema/mvc  
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd ">
+
+	<!-- 扫描web层的bean（controller），纳入spring mvc框架中管理 -->
+	<context:component-scan base-package="demo1.controller" />
+
+	<!-- 开启注解支持模式，主要作用有： 自动注册基于注解风格的处理器需要的DefaultAnnotationHandlerMapping、AnnotationMethodHandlerAdapter 
+		支持Spring3的ConversionService自动注册 支持JSR-303验证框架的自动探测并注册（只需把JSR-303实现放置到classpath） 
+		自动注册相应的HttpMessageConverter（用于支持@RequestBody 和 @ResponseBody）（如XML输入输出转换器（只需将JAXP实现放置到classpath）、JSON输入输出转换器（只需将Jackson实现放置到classpath））等。 -->
+	<mvc:annotation-driven />
+
+	<!-- HandlerMapping:把请求映射为HandlerExecutionChain对象（包含一个Handler处理器（页面控制器）对象、多个HandlerInterceptor拦截器）对象 
+		<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" 
+		/> -->
+	<!-- HandlerAdapter：该类把处理器包装为适配器，从而支持多种类型的处理器。根据适配的结果调用真正的处理器的功能处理方法，完成功能处理，并返回一个ModelAndView对象 
+		<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" 
+		/> -->
+
+	<!-- ViewResolver:配置视图解析 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- viewClass：JstlView表示JSP模板页面需要使用JSTL标签库，classpath中必须包含jstl的相关jar包 <property 
+			name="viewClass" value="org.springframework.web.servlet.view.JstlView" /> -->
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- <bean name="/hello" class="demo1.controller.HelloController"></bean> -->
+
+</beans>
