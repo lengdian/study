@@ -9,8 +9,12 @@
                         http://www.springframework.org/schema/mvc  
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd ">
 
-	<!-- 扫描web层的bean（controller），纳入spring mvc框架中管理 -->
-	<context:component-scan base-package="demo1.controller" />
+	<!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
+	<context:component-scan base-package="com.hxy" use-default-filters="false">
+		<!-- 扫描白名单：只扫描@Controller注解的Class，但是要配置use-default-filters为false，否则默认还是会扫描@Service/@Repository/@Component的Bean，造成一些问题 -->
+		<context:include-filter type="annotation"
+								expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
 
 	<!-- 开启注解支持模式，主要作用有： 自动注册基于注解风格的处理器需要的DefaultAnnotationHandlerMapping、AnnotationMethodHandlerAdapter 
 		支持Spring3的ConversionService自动注册 支持JSR-303验证框架的自动探测并注册（只需把JSR-303实现放置到classpath） 
